@@ -32,7 +32,7 @@ public class DnaRest {
 		/*CUENTO LA CANTIDAD DE HUMANOS QUE HAY EN LA BBDD*/
 		cantHumano=contarAdn("humano");
 		
-		/*SI NO HAY HUMANOS EL RATIO ES 1.0*/
+		/*SI NO HAY HUMANOS Y MUTANTES EL RATIO ES 0.0*/
 		if(cantHumano==0&&cantMutante==0) {
 			ratio=0.0;
 		}else {

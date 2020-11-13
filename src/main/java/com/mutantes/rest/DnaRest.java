@@ -33,12 +33,17 @@ public class DnaRest {
 		cantHumano=contarAdn("humano");
 		
 		/*SI NO HAY HUMANOS EL RATIO ES 1.0*/
-		if(cantHumano==0) {
-			ratio=1.0;
+		if(cantHumano==0&&cantMutante==0) {
+			ratio=0.0;
 		}else {
 			/*SINO HACE EL CALCULO*/
-			suma=cantHumano+cantMutante;
-			ratio= ((cantMutante*100.0)/suma)/100;
+			if(cantHumano==0) {
+				ratio=1.0;
+			}else {
+
+				suma=cantHumano+cantMutante;
+				ratio= ((cantMutante*100.0)/suma)/100;
+			}
 		}
 		Resultado resultado=new Resultado(cantMutante, cantHumano, ratio);
 		/*RETORNA EL OBJETO*/

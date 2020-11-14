@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mutantes.conexion.Conexion;
-import com.mutantes.model.Dna1;
+import com.mutantes.model.Dna;
 import com.mutantes.model.Resultado;
 
 import java.sql.Statement;
@@ -51,7 +51,7 @@ public class DnaRest {
 	}
 	
 	@PostMapping("/mutant")
-	public ResponseEntity<String> postDna(@RequestBody Dna1 dna1) {
+	public ResponseEntity<String> postDna(@RequestBody Dna dna1) {
 		String [] dna;
 		String arrayString;
 		int bandera=0;
@@ -164,7 +164,7 @@ public class DnaRest {
     
     public static void insertarBBDD(int id,String dna,String tipo) {
     	try{
-            String query = "insert into dna (id,dna,tipo) values ('"+ id +  "', '"  + dna+  "', '" + tipo + "')";
+            String query = "insert into dna (id,dna,tipo) values ('" + id +"', '" + dna+  "', '" + tipo + "')";
             Statement stmt=Conexion.getConexion().createStatement();
             stmt.executeUpdate(query);
             Conexion.getConexion().close();

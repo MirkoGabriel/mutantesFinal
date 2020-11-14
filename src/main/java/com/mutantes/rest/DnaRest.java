@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mutantes.conexion.Conexion;
-import com.mutantes.model.Dna;
+import com.mutantes.model.Dna1;
 import com.mutantes.model.Resultado;
 
 import java.sql.Statement;
@@ -36,7 +36,7 @@ public class DnaRest {
 		if(cantHumano==0&&cantMutante==0) {
 			ratio=0.0;
 		}else {
-			/*SI NO HAY HUMANOS EL RATIO ES 0.0*/
+			/*SI NO HAY HUMANOS EL RATIO ES 0.0p*/
 			if(cantHumano==0) {
 				ratio=1.0;
 			}else {
@@ -51,7 +51,7 @@ public class DnaRest {
 	}
 	
 	@PostMapping("/mutant")
-	public ResponseEntity<String> postDna(@RequestBody Dna dna1) {
+	public ResponseEntity<String> postDna(@RequestBody Dna1 dna1) {
 		String [] dna;
 		String arrayString;
 		int bandera=0;
@@ -79,12 +79,12 @@ public class DnaRest {
 	        
 	            if(resultado==true){
 	            	/* INSERTO EL STRING DNA EN LA BASE DE DATOS CON ID MUTANTE*/
-	            	insertarBBDD(arrayString,"mutante");
+	            	insertarBBDD(1,arrayString,"mutante");
 	            	return ResponseEntity.status(200).body("OK");
 	            }else{
 
 	            	/* INSERTO EL STRING DNA EN LA BASE DE DATOS CON ID HUMANO*/
-	            	insertarBBDD(arrayString,"humano");
+	            	insertarBBDD(2,arrayString,"humano");
 	            	return ResponseEntity.status(403).body("Forbidden");
 	            } 
 	       }
@@ -162,9 +162,9 @@ public class DnaRest {
             return false;
     }
     
-    public static void insertarBBDD(String dna,String tipo) {
+    public static void insertarBBDD(int id,String dna,String tipo) {
     	try{
-            String query = "insert into dna (dna,tipo) values ('" + dna+  "', '" + tipo + "')";
+            String query = "insert into dna (id,dna,tipo) values ('"+ id +  "', '"  + dna+  "', '" + tipo + "')";
             Statement stmt=Conexion.getConexion().createStatement();
             stmt.executeUpdate(query);
             Conexion.getConexion().close();

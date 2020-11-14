@@ -12,8 +12,8 @@ public class Conexion {
     }
 
     public static Connection getConexion() throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection cnn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/mutantes", "root", "1234");
-        return cnn;
+    	 Class.forName("org.postgresql.Driver");
+         Connection cnn = DriverManager.getConnection("postgres://neswyazorynuqb:0bd44b860d23d11bfcd60d7e5f87e6acb7cf054f19e4426f8b8816e4dd345a1f@ec2-34-204-121-199.compute-1.amazonaws.com:5432/d2sn4ob89oboum", "neswyazorynuqb", "0bd44b860d23d11bfcd60d7e5f87e6acb7cf054f19e4426f8b8816e4dd345a1f");
+         return cnn;
     }
 }

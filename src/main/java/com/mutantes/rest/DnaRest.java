@@ -79,12 +79,12 @@ public class DnaRest {
 	        
 	            if(resultado==true){
 	            	/* INSERTO EL STRING DNA EN LA BASE DE DATOS CON ID MUTANTE*/
-	            	insertarBBDD(1,arrayString,"mutante");
+	            	insertarBBDD(arrayString,"mutante");
 	            	return ResponseEntity.status(200).body("OK");
 	            }else{
 
 	            	/* INSERTO EL STRING DNA EN LA BASE DE DATOS CON ID HUMANO*/
-	            	insertarBBDD(2,arrayString,"humano");
+	            	insertarBBDD(arrayString,"humano");
 	            	return ResponseEntity.status(403).body("Forbidden");
 	            } 
 	       }
@@ -162,9 +162,9 @@ public class DnaRest {
             return false;
     }
     
-    public static void insertarBBDD(int id,String dna,String tipo) {
+    public static void insertarBBDD(String dna,String tipo) {
     	try{
-            String query = "insert into dna (id,dna,tipo) values ('" + id +"', '" + dna+  "', '" + tipo + "')";
+            String query = "insert into dna (dna,tipo) values ('" + dna+  "', '" + tipo + "')";
             Statement stmt=Conexion.getConexion().createStatement();
             stmt.executeUpdate(query);
             Conexion.getConexion().close();

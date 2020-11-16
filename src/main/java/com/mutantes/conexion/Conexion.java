@@ -13,7 +13,7 @@ public class Conexion {
 
     public static Connection getConexion() throws SQLException, ClassNotFoundException {
     	 Class.forName("com.mysql.cj.jdbc.Driver");
-         Connection cnn = DriverManager.getConnection("jdbc:mysql://db4free.net/mutantes","usermirko1234","Prueba1234");
+         Connection cnn = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com/sql10376928","sql10376928","BzBmU4rr3C");
          return cnn;
     }
 }
